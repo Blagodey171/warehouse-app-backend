@@ -1,6 +1,7 @@
 const express = require('express');
 
 const app = express();
+const PORT = process.env.PORT || 3001;
 
 const posts = [
     {
@@ -40,12 +41,12 @@ const posts = [
 app.use((req, res, next) => {
     req.requestTime = Date.now();
     next();
-})
+});
 
 app.get('/posts', (req, res) => {
     let responseText = 'Hello World!';
     responseText += ' Requested at: ' + req.requestTime + '';
     res.send(responseText);
-})
+});
 
-app.listen(3001, console.log('server starting'))
+app.listen(PORT, console.log('server starting'))
